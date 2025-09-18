@@ -16,5 +16,3 @@ n = 5 # Jahre
 m = 10 # Seitenlaenge
 print(f"Umfang: {umfang(n, m)}")
 print(f"Flaecheninhalt {flaecheninhalt(n, m)}")
-print("\nBeobachtung:")
-print("Für große n wächst der Umfang exponentiell")
