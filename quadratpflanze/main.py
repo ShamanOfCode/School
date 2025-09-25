@@ -1,16 +1,20 @@
+# Aufgabe 3: Die seltsame Quadratpflanze
+
 def umfang(n, m):
     if n == 0:
         return 4 * m
     else:
-        return umfang(n - 1, m) + 3**n * 4 * (m / 3**n)
+        return umfang(n - 1, m) + (3 ** n) * 4 * (m / (2 ** n))
 
 def flaecheninhalt(n, m):
     if n == 0:
-        return m ** 2
+        return m * m
     else:
+        return flaecheninhalt(n - 1, m) + (3 ** n) * (m / (2 ** n)) ** 2
 
-        return flaecheninhalt(n - 1, m) + 3**n * (m / 3**n) ** 2
-
-m = 10
-for n in range(9):
-    print(f"Jahr {n}: Umfang = {umfang(n, m)}, Flaeche = {flaecheninhalt(n, m)}")
+n = 5 # Jahre
+m = 10 # Seitenlaenge
+print(f"Umfang: {umfang(n, m)}")
+print(f"Flaecheninhalt {flaecheninhalt(n, m)}")
+print("\nBeobachtung:")
+print("Für große n wächst der Umfang exponentiell")
