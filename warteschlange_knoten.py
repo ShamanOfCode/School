@@ -66,6 +66,19 @@ class Warteschlange:
             aktueller_knoten = aktueller_knoten.nachfolger_geben()
             count += 1
         return count
+    #sort priority
+    def bubble_sort(self):
+        if self.anfang is None:
+            return
+        end = None
+        while end != self.anfang:
+            aktueller_knoten = self.anfang
+            while aktueller_knoten.nachfolger_geben() != end:
+                naechster_knoten = aktueller_knoten.nachfolger_geben()
+                if aktueller_knoten.datenelement_geben().prioritaet > naechster_knoten.datenelement_geben().prioritaet:
+                    aktueller_knoten.daten, naechster_knoten.daten = naechster_knoten.daten, aktueller_knoten.daten
+                aktueller_knoten = naechster_knoten
+            end = aktueller_knoten
 
 if __name__ == "__main__":
     warteschlange = Warteschlange()
@@ -78,6 +91,15 @@ if __name__ == "__main__":
     warteschlange.einfuegen(buch3)
 
     print("Warteschlange nach dem Einfügen:")
+    warteschlange.ausgeben()
+
+    print("Warteschlange vor dem Sortieren:")
+    warteschlange.ausgeben()
+
+    warteschlange.bubble_sort()
+
+    # show the queue after sorting
+    print("\nWarteschlange nach dem Sortieren (nach Priorität):")
     warteschlange.ausgeben()
 
     geloeschtes_buch = warteschlange.loeschen()
